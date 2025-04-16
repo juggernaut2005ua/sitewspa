@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Wymiany - ZlotyXchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html"><i class="fas fa-home"></i> Strona główna</a>
+        <a href="exchange.html"><i class="fas fa-exchange-alt"></i> Kalkulator wymiany</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="section">
+                <h1 class="title">Kalkulator Wymiany Walut</h1>
+                <p class="subtitle">Wprowadź kwotę i wybierz waluty do wymiany! Nasze kursy są aktualizowane na bieżąco.</p>
+                
+                <div class="last-update">
+                    <i class="fas fa-sync-alt"></i> Ostatnia aktualizacja: <span id="lastUpdateTime">Ładowanie...</span>
+                </div>
+
+                <!-- Kalkulator wymiany -->
+                <div class="currency-exchange-card">
+                    <form id="exchangeForm">
+                        <div class="input-group">
+                            <label for="amount">Kwota</label>
+                            <input type="number" id="amount" name="amount" value="100" min="0.01" step="0.01" required>
+                        </div>
+                        
+                        <div class="currency-select">
+                            <div>
+                                <label for="from">Z waluty</label>
+                                <select id="from" name="from" required>
+                                    <option value="USD">Dolar amerykański (USD)</option>
+                                    <option value="EUR">Euro (EUR)</option>
+                                    <option value="PLN" selected>Polski złoty (PLN)</option>
+                                    <option value="GBP">Funt brytyjski (GBP)</option>
+                                    <option value="CHF">Frank szwajcarski (CHF)</option>
+                                    <option value="JPY">Jen japoński (JPY)</option>
+                                    <option value="CAD">Dolar kanadyjski (CAD)</option>
+                                    <option value="AUD">Dolar australijski (AUD)</option>
+                                </select>
+                            </div>
+                            <div class="swap-container">
+                                <button type="button" id="swapButton" class="swap-button" aria-label="Zamień waluty">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            <div>
+                                <label for="to">Na walutę</label>
+                                <select id="to" name="to" required>
+                                    <option value="USD" selected>Dolar amerykański (USD)</option>
+                                    <option value="EUR">Euro (EUR)</option>
+                                    <option value="PLN">Polski złoty (PLN)</option>
+                                    <option value="GBP">Funt brytyjski (GBP)</option>
+                                    <option value="CHF">Frank szwajcarski (CHF)</option>
+                                    <option value="JPY">Jen japoński (JPY)</option>
+                                    <option value="CAD">Dolar kanadyjski (CAD)</option>
+                                    <option value="AUD">Dolar australijski (AUD)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="result">
+                            <p>Wynik wymiany:</p>
+                            <p id="resultAmount">Ładowanie...</p>
+                            <p id="conversionRate" class="conversion-rate">Przeliczamy kursy...</p>
+                        </div>
+                        
+                        <button type="submit" class="convert-button">
+                            <i class="fas fa-calculator"></i> Przelicz
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tabela kursów walut -->
+                <div class="rates-table-container">
+                    <h2><i class="fas fa-chart-line"></i> Aktualne kursy walut</h2>
+                    <div class="rates-status" id="ratesStatus">Ładowanie najnowszych kursów walut...</div>
+                    <div class="rates-table" id="ratesTable">
+                        <div class="rates-row rates-header">
+                            <div>Waluta</div>
+                            <div>Kurs do PLN</div>
+                            <div>Zmiana</div>
+                        </div>
+                        <div id="ratesTableBody">
+                            <!-- Dynamically populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Porady dotyczące wymiany walut -->
+                <div class="info exchange-tips">
+                    <h2><i class="fas fa-lightbulb"></i> Porady dotyczące wymiany walut</h2>
+                    <ul>
+                        <li>Śledź kursy walut przez kilka dni, aby wybrać najlepszy moment na wymianę</li>
+                        <li>Unikaj wymiany walut na lotniskach, gdzie kursy są zazwyczaj mniej korzystne</li>
+                        <li>Przy większych kwotach negocjuj lepszy kurs w kantorach stacjonarnych</li>
+                        <li>Rozważ wymianę online dla wygody i lepszych stawek</li>
+                        <li>Zaplanuj wymianę z wyprzedzeniem, aby uniknąć presji czasu</li>
+                    </ul>
+                </div>
+
+                <!-- Przykładowa promocja -->
+                <div class="popup" id="promoPopup">
+                    <p><i class="fas fa-gift"></i> Promocja! Wymień powyżej 1000 PLN i otrzymaj bonus 1%! 🎁</p>
+                    <button onclick="closePopup()"><i class="fas fa-times"></i> Zamknij</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZlotyXchange</h3>
+                <p>Najlepszy kantor wymiany walut w Polsce z konkurencyjnymi kursami i profesjonalną obsługą.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybki kontakt</h3>
+                <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> kontakt@zlotyxchange.pl</p>
+            </div>
+            <div class="footer-section">
+                <h3>Śledź nas</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ZlotyXchange. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let exchangeRates = {};
+        let lastUpdate = null;
+
+        // Fetch exchange rates from API
+        async function fetchExchangeRates() {
+            try {
+                document.getElementById('ratesStatus').innerHTML = 'Ładowanie najnowszych kursów walut... <div class="loading"></div>';
+                
+                // Using ExchangeRate-API for real exchange rates
+                const response = await fetch('https://open.er-api.com/v6/latest/PLN');
+                const data = await response.json();
+                
+                if (data.result === 'success') {
+                    // Store the exchange rates
+                    exchangeRates = {
+                        PLN: { PLN: 1 }
+                    };
+                    
+                    // Prepare all currency pairs
+                    const currencies = ['USD', 'EUR', 'PLN', 'GBP', 'CHF', 'JPY', 'CAD', 'AUD'];
+                    
+                    // Calculate rates for all currency pairs
+                    currencies.forEach(fromCurrency => {
+                        exchangeRates[fromCurrency] = {};
+                        currencies.forEach(toCurrency => {
+                            if (fromCurrency === 'PLN') {
+                                // Direct rates from API (PLN to other)
+                                exchangeRates[fromCurrency][toCurrency] = 1 / data.rates[toCurrency];
+                            } else if (toCurrency === 'PLN') {
+                                // Direct rates from API (other to PLN)
+                                exchangeRates[fromCurrency][toCurrency] = data.rates[fromCurrency];
+                            } else {
+                                // Cross rates (other to other)
+                                const fromToPLN = data.rates[fromCurrency];
+                                const PLNToTarget = 1 / data.rates[toCurrency];
+                                exchangeRates[fromCurrency][toCurrency] = fromToPLN * PLNToTarget;
+                            }
+                        });
+                    });
+                    
+                    // Update last update time
+                    lastUpdate = new Date(data.time_last_update_utc);
+                    document.getElementById('lastUpdateTime').textContent = lastUpdate.toLocaleString();
+                    
+                    // Update rates table
+                    updateRatesTable(data.rates);
+                    
+                    // Calculate initial exchange
+                    calculateExchange();
+                    
+                    document.getElementById('ratesStatus').style.display = 'none';
+                } else {
+                    throw new Error('Failed to fetch rates');
+                }
+            } catch (error) {
+                console.error('Error fetching exchange rates:', error);
+                document.getElementById('ratesStatus').textContent = 'Nie udało się załadować kursów walut. Używamy kursów zapasowych.';
+                
+                // Use backup rates if API fails
+                useBackupRates();
+            }
+        }
+        
+        // Use backup exchange rates if API fails
+        function useBackupRates() {
+            exchangeRates = {
+                USD: { PLN: 4.2, EUR: 0.9, GBP: 0.8, USD: 1, CHF: 0.92, JPY: 110, CAD: 1.3, AUD: 1.4 },
+                EUR: { USD: 1.1, PLN: 4.6, GBP: 0.88, EUR: 1, CHF: 1.02, JPY: 122, CAD: 1.43, AUD: 1.54 },
+                PLN: { USD: 0.24, EUR: 0.22, GBP: 0.19, PLN: 1, CHF: 0.22, JPY: 27, CAD: 0.31, AUD: 0.33 },
+                GBP: { USD: 1.25, EUR: 1.14, PLN: 5.2, GBP: 1, CHF: 1.16, JPY: 138, CAD: 1.63, AUD: 1.76 },
+                CHF: { USD: 1.09, EUR: 0.98, PLN: 4.5, GBP: 0.86, CHF: 1, JPY: 120, CAD: 1.4, AUD: 1.5 },
+                JPY: { USD: 0.0091, EUR: 0.0082, PLN: 0.037, GBP: 0.0072, CHF: 0.0083, JPY: 1, CAD: 0.012, AUD: 0.013 },
+                CAD: { USD: 0.77, EUR: 0.7, PLN: 3.2, GBP: 0.61, CHF: 0.71, JPY: 85, CAD: 1, AUD: 1.07 },
+                AUD: { USD: 0.72, EUR: 0.65, PLN: 3.0, GBP: 0.57, CHF: 0.67, JPY: 79, CAD: 0.93, AUD: 1 }
+            };
+            
+            lastUpdate = new Date();
+            document.getElementById('lastUpdateTime').textContent = lastUpdate.toLocaleString() + ' (kursy zapasowe)';
+            
+            // Generate a fake rates table
+            const fakeRates = {
+                USD: 0.24,
+                EUR: 0.22,
+                GBP: 0.19,
+                CHF: 0.22,
+                JPY: 0.037,
+                CAD: 0.31,
+                AUD: 0.33
+            };
+            
+            updateRatesTable(fakeRates, true);
+            calculateExchange();
+        }https://leetcode.com/u/juggernaut2005/
+        
+        // Update the rates table with current exchange rates
+        function updateRatesTable(rates, isBackup = false) {
+            const tableBody = document.getElementById('ratesTableBody');
+            tableBody.innerHTML = '';
+            
+            // Define changes (would normally come from comparing to previous day rates)
+            // For demo, we'll use random changes if using backup rates
+            const changes = {
+                USD: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : 0.0015,
+                EUR: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : -0.0023,
+                GBP: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : 0.0037,
+                PLN: 0,
+                CHF: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : 0.0008,
+                JPY: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : -0.0012,
+                CAD: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : 0.0020,
+                AUD: isBackup ? (Math.random() * 0.04 - 0.02).toFixed(4) : -0.0018
+            };
+            
+            // Create rows for the table (excluding PLN to PLN)
+            Object.keys(rates).forEach(currency => {
+                if (currency === 'PLN') return;
+                
+                const row = document.createElement('div');
+                row.className = 'rates-row';
+                
+                // Format the rate to 4 decimal places
+                const rate = (1 / rates[currency]).toFixed(4);
+                
+                // Determine change class based on value
+                const change = parseFloat(changes[currency]);
+                const changeClass = change > 0 ? 'positive-change' : change < 0 ? 'negative-change' : 'neutral-change';
+                const changeSymbol = change > 0 ? '▲' : change < 0 ? '▼' : '—';
+                
+                row.innerHTML = `
+                    <div>
+                        <img src="https://flagcdn.com/w20/${getCurrencyFlag(currency)}.png" 
+                             alt="${currency}" class="currency-flag-small">
+                        ${currency}
+                    </div>
+                    <div>${rate}</div>
+                    <div class="${changeClass}">${changeSymbol} ${Math.abs(change).toFixed(4)}</div>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Helper function to get flag code from currency code
+        function getCurrencyFlag(currency) {
+            const flagMap = {
+                USD: 'us',
+                EUR: 'eu',
+                GBP: 'gb',
+                PLN: 'pl',
+                CHF: 'ch',
+                JPY: 'jp',
+                CAD: 'ca',
+                AUD: 'au'
+            };
+            
+            return flagMap[currency] || 'un';
+        }
+
+        // Calculate exchange based on form values
+        function calculateExchange() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('from').value;
+            const toCurrency = document.getElementById('to').value;
+            
+            if (!exchangeRates[fromCurrency] || !exchangeRates[fromCurrency][toCurrency]) {
+                document.getElementById('resultAmount').textContent = 'Nie można przelić kursu dla tej pary walut';
+                document.getElementById('conversionRate').textContent = 'Spróbuj wybrać inne waluty';
+                return;
+            }
+            
+            const rate = exchangeRates[fromCurrency][toCurrency];
+            const result = amount * rate;
+            
+            document.getElementById('resultAmount').textContent = `≈ ${result.toFixed(2)} ${toCurrency}`;
+            document.getElementById('conversionRate').textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+        }
+
+        document.getElementById('exchangeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            calculateExchange();
+        });
+        
+        document.getElementById('swapButton').addEventListener('click', function() {
+            const fromSelect = document.getElementById('from');
+            const toSelect = document.getElementById('to');
+            const temp = fromSelect.value;
+            
+            fromSelect.value = toSelect.value;
+            toSelect.value = temp;
+            
+            calculateExchange();
+        });
+
+        function closePopup() {
+            document.getElementById("promoPopup").classList.add("fadeOut");
+            setTimeout(() => {
+                document.getElementById("promoPopup").style.display = "none";
+            }, 500);
+        }
+
+        window.onload = function() {
+            // Fetch exchange rates when page loads
+            fetchExchangeRates();
+            
+            // Show promo popup after a delay
+            setTimeout(() => {
+                document.getElementById("promoPopup").style.display = "block";
+                document.getElementById("promoPopup").classList.add("fadeIn");
+            }, 2000);
+        };
+    </script>
+
+    <style>
+        .last-update {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .swap-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .swap-button {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 16px;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0;
+        }
+        
+        .swap-button:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .conversion-rate {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .convert-button {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .rates-status {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 30px;
+        }
+        
+        .currency-flag-small {
+            width: 20px;
+            height: 15px;
+            vertical-align: middle;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        
+        .positive-change {
+            color: #4cd964;
+        }
+        
+        .negative-change {
+            color: #ff3b30;
+        }
+        
+        .neutral-change {
+            color: #8e8e93;
+        }
+        
+        .exchange-tips {
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent-color);
+            color: #000;
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .currency-select {
+                position: relative;
+                padding-bottom: 20px;
+            }
+            
+            .swap-container {
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+            
+            .rates-row {
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</body>
+</html>

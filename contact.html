@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - ZlotyXchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html"><i class="fas fa-home"></i> Strona główna</a>
+        <a href="exchange.html"><i class="fas fa-exchange-alt"></i> Kalkulator wymiany</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="section">
+                <h1 class="title">Kontakt</h1>
+                <p class="subtitle">Skontaktuj się z nami w każdej chwili!</p>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2><i class="fas fa-address-card"></i> Nasze dane kontaktowe</h2>
+                        <div class="contact-detail">
+                            <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span><strong>Adres:</strong> ul. Warszawska 15, 00-001 Warszawa</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+                            <span><strong>Telefon:</strong> +48 123 456 789</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                            <span><strong>Email:</strong> kontakt@zlotyxchange.pl</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                            <span><strong>Godziny otwarcia:</strong> Pon-Pt: 9:00-17:00</span>
+                        </div>
+                        
+                        <div class="map-container">
+                            <h3>Znajdź nas na mapie</h3>
+                            <div class="map-placeholder">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9775.550258738734!2d21.00582211433949!3d52.23212904068566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0xc2e97ae5528a0f28!2sPa%C5%82ac%20Kultury%20i%20Nauki!5e0!3m2!1spl!2spl!4v1644421624876!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <h2><i class="fas fa-paper-plane"></i> Napisz do nas</h2>
+                        <div class="form-group">
+                            <label for="name">Imię</label>
+                            <input type="text" id="name" placeholder="Twoje imię" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Twój email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Temat</label>
+                            <input type="text" id="subject" placeholder="Temat wiadomości" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Wiadomość</label>
+                            <textarea id="message" placeholder="Twoja wiadomość" required></textarea>
+                        </div>
+
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Wyślij wiadomość</button>
+                        
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+                
+                <div class="info faq-section">
+                    <h2><i class="fas fa-question-circle"></i> Najczęściej zadawane pytania</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Jakie dokumenty są potrzebne do wymiany walut?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Do wymiany kwot do 15 000 PLN nie są wymagane żadne dokumenty. Dla większych kwot, zgodnie z przepisami o przeciwdziałaniu praniu pieniędzy, potrzebny będzie dowód osobisty lub paszport.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Czy można zamówić dostawę waluty do domu?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Tak, oferujemy dostawę walut do domu lub biura. Usługa jest dostępna dla zamówień powyżej 5000 PLN. Skontaktuj się z nami telefonicznie, aby ustalić szczegóły.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Jakie są prowizje przy wymianie walut?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nie pobieramy żadnych prowizji przy wymianie walut. Nasz zysk jest już uwzględniony w kursie wymiany.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZlotyXchange</h3>
+                <p>Najlepszy kantor wymiany walut w Polsce z konkurencyjnymi kursami i profesjonalną obsługą.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybki kontakt</h3>
+                <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> kontakt@zlotyxchange.pl</p>
+            </div>
+            <div class="footer-section">
+                <h3>Śledź nas</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 ZlotyXchange. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            
+            const status = document.getElementById('formStatus');
+            status.textContent = 'Dziękujemy! Twoja wiadomość została wysłana.';
+            status.className = 'form-status success';
+            
+            // Reset formularza po 3 sekundach
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                status.textContent = '';
+                status.className = 'form-status';
+            }, 3000);
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.faq-toggle i');
+                
+                // Toggle the answer visibility
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.className = 'fas fa-plus';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.className = 'fas fa-minus';
+                }
+                
+                // Close other open FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.querySelector('.faq-answer').style.maxHeight) {
+                        item.querySelector('.faq-answer').style.maxHeight = null;
+                        item.querySelector('.faq-toggle i').className = 'fas fa-plus';
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .map-container {
+            margin-top: 30px;
+        }
+        
+        .map-container h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .map-placeholder {
+            height: 250px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .form-status.success {
+            display: block;
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+        
+        .form-status.error {
+            display: block;
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+        
+        .faq-section {
+            margin-top: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover .faq-toggle {
+            background: var(--primary-color);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+        }
+        
+        .faq-answer p {
+            padding: 10px 0;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZlotyXchange - Profesjonalny Kantor Wymiany Walut</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html"><i class="fas fa-home"></i> Strona główna</a>
+        <a href="exchange.html"><i class="fas fa-exchange-alt"></i> Kalkulator wymiany</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="section">
+                <div class="hero-section">
+                    <h1 class="title">ZlotyXchange</h1>
+                    <p class="subtitle">Najlepszy kantor wymiany walut w Polsce</p>
+                    <img src="https://thumbs.dreamstime.com/b/%D0%B1%D0%B0%D0%BD%D0%BD%D0%B5%D1%80-%D0%B8%D0%B7-%D0%BC%D0%BD%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B0-%D1%81%D0%BE%D1%82%D0%B5%D0%BD-%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%BE%D0%B2%D1%8B%D1%85-%D0%BA%D1%83%D0%BF%D1%8E%D1%80-%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B4%D0%B5%D0%BD%D0%B5%D0%B3-%D0%BD%D0%B0-%D0%B7%D0%B0%D0%B4%D0%BD%D0%B5%D0%BC-%D0%BF%D0%BB%D0%B0%D0%BD%D0%B5-252590111.jpg" alt="Wymiana walut" class="hero-image">
+                    
+                    <div class="hero-cards">
+                        <div class="hero-card">
+                            <i class="fas fa-coins card-icon"></i>
+                            <h3>Najlepsze kursy</h3>
+                            <p>Oferujemy konkurencyjne kursy walut bez ukrytych opłat</p>
+                        </div>
+                        <div class="hero-card">
+                            <i class="fas fa-shield-alt card-icon"></i>
+                            <h3>Bezpieczeństwo</h3>
+                            <p>Bezpieczne transakcje z pełną ochroną danych osobowych</p>
+                        </div>
+                        <div class="hero-card">
+                            <i class="fas fa-tachometer-alt card-icon"></i>
+                            <h3>Szybka wymiana</h3>
+                            <p>Natychmiastowa realizacja transakcji 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <h2><i class="fas fa-check-circle"></i> Dlaczego warto nas wybrać?</h2>
+                    <ul>
+                        <li>Konkurencyjne kursy walut aktualizowane w czasie rzeczywistym</li>
+                        <li>Szybkie i bezpieczne transakcje z pełnym wsparciem technicznym</li>
+                        <li>Brak ukrytych opłat i prowizji przy wszystkich wymianach</li>
+                        <li>Obsługa klienta dostępna 24/7 przez telefon, email i chat</li>
+                        <li>Liczne punkty wymiany w największych miastach Polski</li>
+                        <li>Możliwość wymiany walut online z dostawą do domu</li>
+                    </ul>
+                </div>
+                
+                <!-- Live currency rates -->
+                <div class="live-rates">
+                    <h2><i class="fas fa-chart-line"></i> Aktualne kursy walut</h2>
+                    <div class="rates-status" id="ratesStatus">Ładowanie najnowszych kursów walut...</div>
+                    <div class="quick-rates" id="quickRates">
+                        <!-- Dynamically populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="currency-section">
+                    <h2><i class="fas fa-globe"></i> Dostępne waluty</h2>
+                    <div class="currency-grid">
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/us.png" alt="USD Flag" class="currency-flag">
+                            <span>USD</span>
+                            <span>Dolar amerykański</span>
+                        </div>
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/eu.png" alt="EUR Flag" class="currency-flag">
+                            <span>EUR</span>
+                            <span>Euro</span>
+                        </div>
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="GBP Flag" class="currency-flag">
+                            <span>GBP</span>
+                            <span>Funt brytyjski</span>
+                        </div>
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/pl.png" alt="PLN Flag" class="currency-flag">
+                            <span>PLN</span>
+                            <span>Polski złoty</span>
+                        </div>
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/ch.png" alt="CHF Flag" class="currency-flag">
+                            <span>CHF</span>
+                            <span>Frank szwajcarski</span>
+                        </div>
+                        <div class="currency-item">
+                            <img src="https://flagcdn.com/w40/jp.png" alt="JPY Flag" class="currency-flag">
+                            <span>JPY</span>
+                            <span>Jen japoński</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-section">
+                    <h2><i class="fas fa-star"></i> Co mówią nasi klienci</h2>
+                    <div class="testimonials">
+                        <div class="testimonial">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonial Avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"Korzystam z ZlotyXchange od 3 lat i zawsze oferują najlepsze kursy. Polecam każdemu!"</p>
+                                <cite>- Jan Kowalski</cite>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonial Avatar">
+                            </div>
+                            <div class="testimonial-content">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>"Szybka wymiana, profesjonalna obsługa. Najlepszy kantor z jakim miałam do czynienia."</p>
+                                <cite>- Anna Nowak</cite>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h2>Gotów wymienić walutę?</h2>
+                    <p>Sprawdź nasz kalkulator wymiany i poznaj aktualne kursy już teraz!</p>
+                    <a href="exchange.html" class="cta-button">Przejdź do kalkulatora <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZlotyXchange</h3>
+                <p>Najlepszy kantor wymiany walut w Polsce z konkurencyjnymi kursami i profesjonalną obsługą.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybki kontakt</h3>
+                <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> kontakt@zlotyxchange.pl</p>
+            </div>
+            <div class="footer-section">
+                <h3>Śledź nas</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ZlotyXchange. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Fetch exchange rates from API when page loads
+        window.onload = function() {
+            fetchExchangeRates();
+        };
+        
+        // Fetch exchange rates from API
+        async function fetchExchangeRates() {
+            try {
+                document.getElementById('ratesStatus').innerHTML = 'Ładowanie najnowszych kursów walut... <div class="loading"></div>';
+                
+                // Using ExchangeRate-API for real exchange rates
+                const response = await fetch('https://open.er-api.com/v6/latest/PLN');
+                const data = await response.json();
+                
+                if (data.result === 'success') {
+                    // Update quick rates display
+                    updateQuickRates(data.rates);
+                    
+                    document.getElementById('ratesStatus').style.display = 'none';
+                } else {
+                    throw new Error('Failed to fetch rates');
+                }
+            } catch (error) {
+                console.error('Error fetching exchange rates:', error);
+                document.getElementById('ratesStatus').textContent = 'Nie udało się załadować kursów walut. Używamy kursów zapasowych.';
+                
+                // Use backup rates if API fails
+                useBackupRates();
+            }
+        }
+        
+        // Use backup exchange rates if API fails
+        function useBackupRates() {
+            const backupRates = {
+                USD: 0.24,
+                EUR: 0.22,
+                GBP: 0.19,
+                CHF: 0.22,
+                JPY: 0.037,
+                CAD: 0.31,
+                AUD: 0.33
+            };
+            
+            updateQuickRates(backupRates);
+        }
+        
+        // Update the quick rates display
+        function updateQuickRates(rates) {
+            const quickRates = document.getElementById('quickRates');
+            quickRates.innerHTML = '';
+            
+            // Display only major currencies
+            const currencies = ['USD', 'EUR', 'GBP', 'CHF'];
+            
+            currencies.forEach(currency => {
+                // Format the rate to 4 decimal places (inverse for display)
+                const rate = (1 / rates[currency]).toFixed(4);
+                
+                const rateCard = document.createElement('div');
+                rateCard.className = 'rate-card';
+                rateCard.innerHTML = `
+                    <div class="rate-currency">
+                        <img src="https://flagcdn.com/w20/${getCurrencyFlag(currency)}.png" alt="${currency}" class="currency-flag-small">
+                        ${currency}
+                    </div>
+                    <div class="rate-value">${rate}</div>
+                    <div class="rate-label">PLN</div>
+                `;
+                
+                quickRates.appendChild(rateCard);
+            });
+        }
+        
+        // Helper function to get flag code from currency code
+        function getCurrencyFlag(currency) {
+            const flagMap = {
+                USD: 'us',
+                EUR: 'eu',
+                GBP: 'gb',
+                PLN: 'pl',
+                CHF: 'ch',
+                JPY: 'jp',
+                CAD: 'ca',
+                AUD: 'au'
+            };
+            
+            return flagMap[currency] || 'un';
+        }
+    </script>
+
+    <style>
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .hero-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .hero-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .currency-section {
+            margin-top: 40px;
+        }
+        
+        .currency-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .currency-flag {
+            width: 40px;
+            height: 25px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .live-rates {
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .live-rates h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .rates-status {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 30px;
+        }
+        
+        .quick-rates {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .rate-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .rate-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .rate-currency {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .rate-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 5px 0;
+        }
+        
+        .rate-label {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .currency-flag-small {
+            width: 20px;
+            height: 15px;
+            vertical-align: middle;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        
+        .testimonial-section {
+            margin-top: 50px;
+        }
+        
+        .testimonial-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            display: flex;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-avatar {
+            flex: 0 0 80px;
+            margin-right: 20px;
+        }
+        
+        .testimonial-avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .testimonial-content {
+            flex: 1;
+        }
+        
+        .testimonial-rating {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-content cite {
+            display: block;
+            text-align: right;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .cta-section {
+            margin-top: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.5), rgba(0, 160, 227, 0.5));
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .cta-section p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #000;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: #e6b800;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button i {
+            margin-left: 10px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent-color);
+            color: #000;
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .testimonial-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .testimonial-content cite {
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick-rates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</body>
+</html>
